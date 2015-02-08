@@ -1,5 +1,6 @@
 require_relative "app_manager/version"
 require_relative "app_manager/site"
+require_relative "app_manager/util"
 
 module AppManager
   class Config
