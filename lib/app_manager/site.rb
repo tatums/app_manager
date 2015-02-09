@@ -11,7 +11,7 @@ module AppManager
       last_site = if all.empty?
                     self.new(name: "null", port: 8000)
                   else
-                    all.sort_by{|s| s.port}.last
+                    self.all.sort_by{|s| s.port}.last
                   end
       last_site.port + 1
     end
