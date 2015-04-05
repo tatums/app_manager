@@ -35,9 +35,9 @@ module AppManager
 
     def save
       begin
-        Dir.mkdir([AppManager.config.sites_path, handle].join('/'))
-        Dir.mkdir([AppManager.config.sites_path, handle, 'config'].join('/'))
-        Dir.mkdir([AppManager.config.sites_path, handle, 'log'].join('/'))
+        FileUtils.mkdir_p([AppManager.config.sites_path, handle].join('/'))
+        FileUtils.mkdir_p([AppManager.config.sites_path, handle, 'config'].join('/'))
+        FileUtils.mkdir_p([AppManager.config.sites_path, handle, 'log'].join('/'))
 
         config_file = File.open([AppManager.config.sites_path, handle, 'config', 'config.ru'].join('/'), 'a')
         create_config(config_file, name, port)
@@ -45,7 +45,7 @@ module AppManager
         thin_file = File.open([AppManager.config.sites_path, handle, 'config', 'thin.yml'].join('/'), 'a')
         create_thin(thin_file, name, port)
       rescue => e
-        e
+        puts e
       end
     end
 
