@@ -9,7 +9,7 @@ module AppManager
 
     def self.next_port
       last_site = if all.empty?
-                    self.new(name: "null", port: 8000)
+                    self.new("null", 8000)
                   else
                     self.all.sort_by{|s| s.port}.last
                   end
